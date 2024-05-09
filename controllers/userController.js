@@ -94,11 +94,11 @@ module.exports = {
     }
   },
   // Remove user response
-  async removeuserReaction(req, res) {
+  async removeUserFriend(req, res) {
     try {
-      const user = await user.findOneAndUpdate(
+      const user = await User.findOneAndUpdate(
         { _id: req.params.userId },
-        { $pull: { reactions: { reactionId: req.params.reactionId } } },
+        { $pull: { friends: req.params.friendId } },
         { runValidators: true, new: true }
       )
 
