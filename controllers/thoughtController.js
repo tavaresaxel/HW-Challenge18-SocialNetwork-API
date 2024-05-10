@@ -64,13 +64,13 @@ module.exports = {
   },
   async deleteThoughts(req, res) {
     try {
-      const thought = await Thought.findOneAndRemove({ _id: req.params.thoughtId });
+      const thought = await Thought.findOneAndDelete({ _id: req.params.thoughtId });
 
       if (!thought) {
         return res.status(404).json({ message: 'No Thought with this id!' });
       }
 
-      const user = await User.findOneAndUpdate(
+      const user = await User.findOneAndDelete(
         { thoughts: req.params.thoughtId },
         { $pull: { thoughts: req.params.thoughtId } },
         { new: true }
