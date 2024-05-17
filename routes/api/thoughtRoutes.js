@@ -24,7 +24,7 @@ router
 //http://localhost:3001/api/thoughts/
 router.route('/:thoughtsId/reactions').post(addThoughtReaction);
 
-// /api/thoughts/:videoId/responses/:responseId
+// /api/thoughts/:thoughtsId/responses/:responseId
 router.route('/:thoughtsId/reactions/:reactionId').delete(removeThoughtReaction);
 
 module.exports = router;
