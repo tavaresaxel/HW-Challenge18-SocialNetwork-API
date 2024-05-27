@@ -64,22 +64,22 @@ module.exports = {
   },
   async deleteThoughts(req, res) {
     try {
-      const thought = await Thought.findOneAndDelete({ _id: req.params.thoughtId });
+      const thought = await Thought.findOneAndDelete({ _id: req.params.thoughtsId });
 
       if (!thought) {
         return res.status(404).json({ message: 'No Thought with this id!' });
       }
 
-      const user = await User.findOneAndDelete(
-        { username: req.params.username },
-        { new: true }
-      );
+      // const user = await User.findOneAndDelete(
+      //   { username: req.params.username },
+      //   { new: true }
+      // );
 
-      if (!user) {
-        return res
-          .status(404)
-          .json({ message: 'Thought created but no user with this id!' });
-      }
+      // if (!user) {
+      //   return res
+      //     .status(404)
+      //     .json({ message: 'Thought created but no user with this id!' });
+      // }
 
       res.json({ message: 'Thought successfully deleted!' });
     } catch (err) {
